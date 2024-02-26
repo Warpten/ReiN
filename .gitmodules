@@ -1,0 +1,9 @@
+[submodule "submodules/fmtlib"]
+	path = submodules/fmtlib
+	url = https://github.com/fmtlib/fmt
+[submodule "submodules/libassert"]
+	path = submodules/libassert
+	url = https://github.com/jeremy-rifkin/libassert
+[submodule "submodules/grpc"]
+	path = submodules/grpc
+	url = git@github.com:grpc/grpc.git

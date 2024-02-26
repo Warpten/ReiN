@@ -1,0 +1,34 @@
+// Declares all services exposed by the server.
+
+syntax = "proto3";
+
+import "shared.proto";
+
+service RoomService {
+   rpc CreateRoom (CreateRoomRequest) returns (CreateRoomResponse) { }
+   rpc ConnectToRoom (RoomInfo) returns (ConnectResult) { }
+   rpc DisconnectRoom (RoomInfo) returns () { }
+   rpc UpdateRoomData (RoomInfo) returns () { }
+}
+
+// Supporting types 
+message CreateRoomRequest {
+  string name = 1;
+  string password = 2;
+}
+
+message CreateRoomResponse {
+  oneof payload {
+    ErrorCode error = 1;
+    RoomInfo roomInfo = 2;
+  }
+
+  enum Result {
+    // Already in a room.
+    InRoom = 0;
+    // A room with this name already exists.
+    RoomAlreadyExists = 1;
+    // Unknown error.
+    UnknownError = 2;
+  }
+}
